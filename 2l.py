@@ -3,6 +3,7 @@ import control as c
 import json
 import os
 import time
+import requests
 if not os.path.exists("tokens.txt"):
     exit("未找到Tokens文件")
 
@@ -15,6 +16,7 @@ if len(zid) == 0:
     exit("?")
 
 for _ in tokens:
+    view = requests.get(f"https://shequ.codemao.cn/work/{zid}")
     start_time = time.time()
     al = al + 1
     req = c.call_api(f"nemo/v2/works/{zid}/collection", "{}", _)

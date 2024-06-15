@@ -9,7 +9,7 @@ except ImportError:
     exit("请先 pip3 install requests")
 
 # 请在此处填写Token 如何获取请查看README中的注意事项
-token = ""
+token = "eyJraWQiOiIwZTBhOTFlOS03MDM3LTQ0ZTYtOWYwZS1lM2QyMWZlNDkwNzkiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJhdGhfY2lkIjoiV0VCIiwic3ViIjoiQ29kZW1hbyBBdXRoIiwiYXRoX3VpZCI6IjE0NTgyMjcxMDMiLCJhdGhfdHlwIjoxLCJpc3MiOiJBdXRoIFNlcnZpY2UiLCJhdGhfdmVyIjoiMS4wLjAiLCJleHAiOjE3MTg0NTk3MzgsImlhdCI6MTcxODQ1MjUzOCwianRpIjoiQUFBQmtCdkF6UU5LMUVuYXVCWngyRXdkR0NPR0ljVDQifQ.TCjwj1u67HuZvMm5ZtPmuolbMSUK-H38XFeOLxDWkWyHk7QrbQ6B5-0tG9UdLE6Oxk1ywkW1gk9V1__DhFNCNhY0ReuPwq5-Cl2cMl723TbLmD-cIErZ6-sIAUU--9L-HdV9vvTfGweXjI3P0qIbxyq682Tp7vjnHz48YfVyx5UYXKbUlBOhZz2exGg7NCkY_wcXymO-0ledbaSJoRBGLRXnn52OwXh2GGeyNA3c3MqOmZCqKwTRLs06VXt7sUrjyw5y3qvzozgqPs6fNWT89t88ka-6jNG6ydponFgOtA54GbXC2FP7r5XgsY5cqgEzXFaeZoCq6LoQspg3KoLl4w"
 print("班级名将为随机十二位字母")
 
 edu_createclass_url = "https://eduzone.codemao.cn/edu/zone/class"
@@ -27,7 +27,7 @@ header = {
 all_cls = requests.get(f"https://eduzone.codemao.cn/edu/zone/classes?page=1&TIME={int(time.time())}", headers=header)
 if all_cls.status_code == 200:
     all_cls = json.loads(all_cls.text).get("total")
-    willcreate_cls = 100 - all_cls
+    willcreate_cls = 400 - all_cls
     print(f"将创建{willcreate_cls}个班级 | 共{all_cls}个")
 else:
     exit(f"请求失败：{str(all_cls.text)}")
