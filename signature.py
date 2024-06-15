@@ -24,4 +24,4 @@ for _ in tokens:
         speed = int(60 / ut)
         print(f"\r第{al}个已完成(共{len(tokens)}个) | 速度: {speed} 个/分钟", end="")
 
-print("\r请求完毕",end="")
+print("\r请求完毕", end="")
