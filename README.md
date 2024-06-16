@@ -39,7 +39,9 @@
 
 `python3 2l.py`
 
-### EDU类（在/edu）
+### ~~EDU类（在/edu）~~
+
+> 由于有重大BUG，请使用https://github.com/CodemaoCommunityHistory/CodemaoEduAutoReg
 
 #### 自动注册
 
