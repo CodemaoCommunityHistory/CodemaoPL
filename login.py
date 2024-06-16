@@ -41,7 +41,6 @@ print(f"---------------\n总共{all_account}个账号待登录\n---------------"
 for _ in range(all_account):
     try:
         start_time = time.time()
-        time.sleep(1)
         users = []
         passwords = []
         for row in sheet.iter_rows(min_row=1, min_col=2, max_col=3, values_only=True):

@@ -66,6 +66,6 @@ for _ in range(willcreate_cls):
     create_class_stud = requests.post(f"https://eduzone.codemao.cn/edu/zone/class/{id}/students", data=stud_names,
                                       headers=header)
     if create_class_stud.status_code == 200:
-        print(f"班级创建成功，全部创建之后，可以在 https://teacher-edu.codemao.cn/studentManage 导出所有学生信息")
+        pass
     else:
         exit(f"请求失败：{str(create_class_stud.text)}")
