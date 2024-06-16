@@ -41,25 +41,15 @@
 
 ### ~~EDU类（在/edu）~~
 
-> 由于有重大BUG，请使用https://github.com/CodemaoCommunityHistory/CodemaoEduAutoReg
-
-#### 自动注册
-
-`python3 auto.py`
-
-请先打开文件修改Token为自己的，再执行
-
-默认创建400个班级（EDU上限）如果先前已创建则补齐100个班级，最多能创建400x100=40000个账号 / 每个EDU
-
-全部创建后，可以在 https://teacher-edu.codemao.cn/studentManage 导出所有学生信息
-
-学生名字默认为程序内的字典，不需要动
+由于有重大BUG，请使用https://github.com/CodemaoCommunityHistory/CodemaoEduAutoReg
 
 ## 注意事项
 
 ### 表格文件的格式
 
-​		直接下载的表格可能会有标题，请把他们变成这样的格式，或者查看 `example.xlsx`		
+> 由自动注册工具生成的可以直接使用
+
+​		直接下载的表格可能会有标题，请把他们变成这样的格式，或者查看 `other/example.xlsx`		
 
 ​		也就是没有标题，不要带标题就行，直接就 **账号名-账号-密码**
 
