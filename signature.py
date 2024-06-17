@@ -1,9 +1,22 @@
 # @author:Wangs_official
 # 先过签订友好协议再进行批量评论什么的
-import control as c
-import json
 import os
+import queue
+import threading
 import time
+
+import control as c
+
+
+def worker(q):
+    while not q.empty():
+        mission = q.get()
+        req = c.call_api("nemo/v3/user/level/signature", "{}", mission)
+        if not req.status_code == 200:
+            print(f"请求失败 : {req.text}\n----------")
+        else:
+            print(f"\r正在请求，你先别急", end="")
+
 
 if not os.path.exists("tokens.txt"):
     exit("未找到Tokens文件")
@@ -11,17 +24,9 @@ if not os.path.exists("tokens.txt"):
 tokens = open("tokens.txt", "r").read().split("\n")
 print("已加载Token数量：" + str(len(tokens)))
 
-al = 0
-
-for _ in tokens:
-    start_time = time.time()
-    al = al + 1
-    req = c.call_api("nemo/v3/user/level/signature", "{}", _)
-    if not req.status_code == 200:
-        print(f"   第{al}个请求失败 : {req.text}\n----------")
-    else:
-        ut = time.time() - start_time
-        speed = int(60 / ut)
-        print(f"\r第{al}个已完成(共{len(tokens)}个) | 速度: {speed} 个/分钟", end="")
-
-print("\r请求完毕", end="")
+q = queue.Queue()
+for token in tokens:
+    q.put(token)
+worker_num = 8
+for _ in range(worker_num):
+    threading.Thread(target=worker, args=(q,)).start()

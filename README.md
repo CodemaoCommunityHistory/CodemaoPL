@@ -7,7 +7,8 @@
 ## 需求
 
 1. 需要安装Python
-2. 需要安装 `requests` ，`openpyxl` 库
+2. 需要安装 `requests`, `openpyxl`, `queuelib` 库
+3. CPU好一点，因为跑8线程
 
 ## 使用
 
@@ -35,7 +36,7 @@
 
 `python3 follow.py`
 
-#### 点赞＋收藏
+#### 点赞＋收藏+浏览
 
 `python3 2l.py`
 
