@@ -10,8 +10,8 @@ import queue
 import threading
 
 # Constrants
-
-WORKER_NUM = 2000
+worker=input("Worker number(default 512): ")
+WORKER_NUM = int(worker) if worker.isdigit() else 512
 REPORT_INTERVAL = 10
 RETRIES = 10
 
