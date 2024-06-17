@@ -3,6 +3,7 @@ import os
 import queue
 import threading
 import time
+import requests
 
 import control as c
 
@@ -21,18 +22,20 @@ if len(zid) == 0:
 def worker(q, zid):
     while not q.empty():
         mission = q.get()
-        view = requests.get(f"https://shequ.codemao.cn/work/{zid}", headers={"Authorization": mission})
+        while 1:
+            for _ in range(10):
+                view = requests.get(f"https://api.codemao.cn/creation-tools/v1/works/{zid}", headers={"Authorization": mission})
+            break
         req = c.call_api(f"nemo/v2/works/{zid}/collection", "{}", mission)
         req2 = c.call_api(f"nemo/v2/works/{zid}/like", "{}", mission)
         if not req.status_code == 200:
             print(f"   (点赞)请求失败 : {req.text}\n----------")
         if not req2.status_code == 200:
             print(f"   (收藏)请求失败 : {req2.text}\n----------")
-        else:
-            print(f"\r正在请求，你先别急", end="")
 
 
 q = queue.Queue()
+print(f"\r正在请求，你先别急", end="")
 for token in tokens:
     q.put(token)
 worker_num = 8

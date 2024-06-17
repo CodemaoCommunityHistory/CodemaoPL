@@ -36,9 +36,15 @@
 
 `python3 follow.py`
 
-#### 点赞＋收藏+浏览
+#### 点赞＋收藏
 
 `python3 2l.py`
+
+#### 刷浏览量（在other文件夹下）
+
+`python3 shuaview.py`
+
+**需要一个Token，随便找一个就好**
 
 ### ~~EDU类（在/edu）~~
 

@@ -14,8 +14,6 @@ def worker(q):
         req = c.call_api("nemo/v3/user/level/signature", "{}", mission)
         if not req.status_code == 200:
             print(f"请求失败 : {req.text}\n----------")
-        else:
-            print(f"\r正在请求，你先别急", end="")
 
 
 if not os.path.exists("tokens.txt"):
@@ -25,6 +23,7 @@ tokens = open("tokens.txt", "r").read().split("\n")
 print("已加载Token数量：" + str(len(tokens)))
 
 q = queue.Queue()
+print(f"\r正在请求，你先别急", end="")
 for token in tokens:
     q.put(token)
 worker_num = 8
